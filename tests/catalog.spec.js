@@ -2,7 +2,7 @@
 const { test, expect } = require('@playwright/test');
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://publibrary.librarika.com/');
+  await page.goto('/');
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Binup's Public Library/);
@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('E2E tests for catalog categories', () => {
   test('view catalog categories', async ({ page }) => {
-    await page.goto('https://publibrary.librarika.com/users/dashboard');
+    await page.goto('/users/dashboard');
     await expect(page.getByText('Discover')).toBeVisible();
     await page.locator('i[class="feather icon-folder"]').hover();
     await page.locator('i[class="feather icon-folder"]').click();
@@ -23,7 +23,7 @@ test.describe('E2E tests for catalog categories', () => {
 
   });
   test('add duplicate catalog item', async ({ page }) => {
-    await page.goto('https://publibrary.librarika.com/users/dashboard');
+    await page.goto('/users/dashboard');
     await expect(page.getByText('Discover')).toBeVisible();
     await page.locator('i[class="feather icon-folder"]').hover();
     await page.locator('i[class="feather icon-folder"]').click();

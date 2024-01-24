@@ -3,14 +3,14 @@ const { CatalogPage } = require('../page-objects/catalog-page');
 
 test.beforeEach(async ({ page }) => {
     const catalogPage = new CatalogPage(page);
-    await catalogPage.gotoUrl('https://publibrary.librarika.com/');
+    await catalogPage.gotoUrl('/');
     await catalogPage.login()
   });
 
 test.describe('E2E tests for catalog categories', () => {
     test('view catalog categories', async ({ page }) => {
         const catalogPage = new CatalogPage(page);
-        await catalogPage.gotoUrl('https://publibrary.librarika.com/users/dashboard');
+        await catalogPage.gotoUrl('/users/dashboard');
         await expect(await catalogPage.getByText('Discover')).toBeVisible();
         await catalogPage.clickCatalog();
         await catalogPage.clickCategories();
@@ -18,7 +18,7 @@ test.describe('E2E tests for catalog categories', () => {
 
     test('add duplicate catalog item', async ({ page }) => {
         const catalogPage = new CatalogPage(page);
-        await catalogPage.gotoUrl('https://publibrary.librarika.com/users/dashboard');
+        await catalogPage.gotoUrl('/users/dashboard');
         await expect(await catalogPage.getByText('Discover')).toBeVisible();
         await catalogPage.clickCatalog();
         await catalogPage.clickCatalogItem();
